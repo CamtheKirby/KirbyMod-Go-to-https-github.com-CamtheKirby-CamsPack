@@ -7,9 +7,6 @@
 
 The Kirby Mod!
 
-For your mod, remember to add the GitHub topic "btd6-mod"
-
-Features a GitHub actions setup to automatically build the mod whenever commits are pushed,
-and publish a release if a tag is pushed (using the LATEST.md as the body).
+This Mod Will be updated to add new towers! Hope you enjoy the Mod! -Cam
 
 [![Requires BTD6 Mod Helper](https://raw.githubusercontent.com/gurrenm3/BTD-Mod-Helper/master/banner.png)](https://github.com/gurrenm3/BTD-Mod-Helper#readme)
