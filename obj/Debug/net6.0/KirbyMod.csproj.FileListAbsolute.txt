@@ -1,0 +1,10 @@
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.csproj.AssemblyReference.cache
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.AssemblyInfo.cs
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\bin\Debug\net6.0\KirbyMod.deps.json
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\bin\Debug\net6.0\KirbyMod.dll
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\KirbyMod.dll
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\refint\KirbyMod.dll
+C:\Users\Owner\Documents\BTD6 Mod Sources\KirbyMod\obj\Debug\net6.0\ref\KirbyMod.dll
