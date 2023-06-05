@@ -1,28 +1,31 @@
-using MelonLoader;
-using BTD_Mod_Helper;
-using BTD_Mod_Helper.Api.Towers;
-using BTD_Mod_Helper.Api.Enums;
-using BTD_Mod_Helper.Extensions;
-using UnityEngine;
-using HarmonyLib;
-using System;
-using System.Reflection;
-using BTD_Mod_Helper.Api;
-using Random = System.Random;
 using BTD_Mod_Helper.Api.Display;
-using Il2CppSystem;
+using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Extensions;
 using Il2CppAssets.Scripts.Models.Towers;
-using Il2CppAssets.Scripts.Unity.Display;
-using Il2CppAssets.Scripts.Unity;
-using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Models.TowerSets;
-using Il2Cpp;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
+using MelonLoader;
+using static Kirby.Displays;
 
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace Kirby;
+
+internal class Displays
+{
+    public class KirbyPara : ModDisplay
+    {
+        public override string BaseDisplay => Generic2dDisplay;
+
+        public override void ModifyDisplayNode(UnityDisplayNode node)
+        {
+            Set2DTexture(node, "StarRodDisplay");
+        }
+    }
+}
 public class NothingDisplay : ModDisplay
 {
     public override string BaseDisplay => Generic2dDisplay;
@@ -281,7 +284,7 @@ public class SingingClub : ModUpgrade<Kirby>
 
     // public override string DisplayName => "Don't need to override this, the default turns it into 'Pair'"
 
-    public override string Description => "Kirby Now Shoots His Music In All Directions and Can Buff Towers and With his ability he can attack faster!";
+    public override string Description => "Kirby Now Shoots His Music In All Directions! Can Buff Towers and With his ability he can attack faster!";
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
@@ -302,7 +305,7 @@ public class SingingClub : ModUpgrade<Kirby>
         towerModel.AddBehavior(Ability);
 
         var buffM1 = new RateSupportModel("RateSupport1", 0.46f, true, "Kirby:Rate", false, 1, null, null, null);
-       buffM1.ApplyBuffIcon<KirbyBuffIcon>();
+        buffM1.ApplyBuffIcon<KirbyBuffIcon>();
         towerModel.AddBehavior(buffM1);
 
         var buffM2 = new RateSupportModel("RateSupport2", 15, true, "Kirby:Damage", false, 1, null, null, null);
@@ -474,12 +477,24 @@ public class TheUltraSword : ModUpgrade<Kirby>
 public class StarRod : ModParagonUpgrade<Kirby>
 {
     public override int Cost => 1900019;
-    public override string Description => "'Wow What's This Cool Thing?'";
+    public override string Description => "'Wow What's This Cool Thing?' (NOTE: I Don't Know How To Change The Paragon Model";
     public override string DisplayName => "The Star Rod";
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
-  towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().damage = 69599299;
+        var Ability = Game.instance.model.GetTower(TowerType.BoomerangMonkey, 0, 5, 0).GetAbilities()[0].Duplicate();
+        Ability.maxActivationsPerRound = 9999999;
+        Ability.canActivateBetweenRounds = true;
+        Ability.resetCooldownOnTierUpgrade = true;
+        Ability.cooldown = 15;
+        Ability.icon = GetSpriteReference("KirbyPath4Icon_Icon");
+        towerModel.AddBehavior(Ability);
+
+        towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().damage = 69599299;
         towerModel.GetAttackModel().weapons[0].rate *= .1f;
+        towerModel.GetAttackModel().weapons[0].projectile.pierce = 9999999999999999999;
+        towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().immuneBloonProperties = 0;
+        towerModel.ApplyDisplay<KirbyPara>();
+  
     }
 }
