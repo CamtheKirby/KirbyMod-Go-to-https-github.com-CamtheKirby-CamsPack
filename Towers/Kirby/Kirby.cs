@@ -8,24 +8,13 @@ using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
 using MelonLoader;
-using static Kirby.Displays;
 
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
 
 namespace Kirby;
 
-internal class Displays
-{
-    public class KirbyPara : ModDisplay
-    {
-        public override string BaseDisplay => Generic2dDisplay;
 
-        public override void ModifyDisplayNode(UnityDisplayNode node)
-        {
-            Set2DTexture(node, "StarRodDisplay");
-        }
-    }
-}
+
 public class NothingDisplay : ModDisplay
 {
     public override string BaseDisplay => Generic2dDisplay;
@@ -253,7 +242,7 @@ public class SingForMoney : ModUpgrade<Kirby>
     public override string Portrait => "LuigiIcon";
     public override int Path => MIDDLE;
     public override int Tier => 3;
-    public override int Cost => 995;
+    public override int Cost => 1125;
 
     // public override string DisplayName => "Don't need to override this, the default turns it into 'Pair'"
 
@@ -264,7 +253,7 @@ public class SingForMoney : ModUpgrade<Kirby>
         var Money = Game.instance.model.GetTowerFromId("BananaFarm").GetAttackModel().Duplicate();
         Money.name = "BananaFarm_";
         Money.weapons[0].projectile.GetBehavior<CashModel>().maximum = 35;
-        Money.weapons[0].projectile.GetBehavior<CashModel>().minimum = 1;
+        Money.weapons[0].projectile.GetBehavior<CashModel>().minimum = 30;
         towerModel.AddBehavior(Money);
         towerModel.GetAttackModel().range += 1f;
         towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().damage = 2;
@@ -477,7 +466,7 @@ public class TheUltraSword : ModUpgrade<Kirby>
 public class StarRod : ModParagonUpgrade<Kirby>
 {
     public override int Cost => 1900019;
-    public override string Description => "'Wow What's This Cool Thing?' (NOTE: I Don't Know How To Change The Paragon Model";
+    public override string Description => "'Wow What's This Cool Thing?'";
     public override string DisplayName => "The Star Rod";
 
     public override void ApplyUpgrade(TowerModel towerModel)
@@ -494,7 +483,7 @@ public class StarRod : ModParagonUpgrade<Kirby>
         towerModel.GetAttackModel().weapons[0].rate *= .1f;
         towerModel.GetAttackModel().weapons[0].projectile.pierce = 9999999999999999999;
         towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().immuneBloonProperties = 0;
-        towerModel.ApplyDisplay<KirbyPara>();
+       
   
     }
 }

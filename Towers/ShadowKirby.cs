@@ -24,7 +24,7 @@ public class SKirbyBuffIcon : ModBuffIcon
 {
     protected override int Order => 1;
     public override string Icon => "KirbyBuffIcon";
-    public override int MaxStackSize => 1;
+    public override int MaxStackSize => 5;
 }
 
 public class ShadowKirby : ModTower

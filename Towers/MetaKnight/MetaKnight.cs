@@ -50,8 +50,6 @@ public class MetaKnight : ModTower
         towerModel.GetAttackModel().range = Game.instance.model.GetTower(TowerType.Sauda).GetAttackModel().range;
         towerModel.range = Game.instance.model.GetTower(TowerType.Sauda).range;
         towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().immuneBloonProperties = 0;
-        towerModel.AddBehavior(new OverrideCamoDetectionModel("OverrideCamoDetectionModel", true));
-        towerModel.towerSelectionMenuThemeId = "Camo";
     }
     public override string Get2DTexture(int[] tiers)
     {
@@ -201,8 +199,8 @@ public class EvenLongerSword : ModUpgrade<MetaKnight>
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
-        towerModel.GetAttackModel().range += 25;
-        towerModel.range += 25;
+        towerModel.GetAttackModel().range += 20;
+        towerModel.range += 20;
         towerModel.GetAttackModel().weapons[0].projectile.pierce += 7;
     }
 }

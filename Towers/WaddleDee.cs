@@ -13,18 +13,6 @@ using MelonLoader;
 
 namespace WaddleDee;
 
-internal class Displays
-{
-    public class GoldenDeeDis : ModDisplay
-    {
-       
-        public override string BaseDisplay => Generic2dDisplay;
-
-        public override void ModifyDisplayNode(UnityDisplayNode node)
-        {
-            Set2DTexture(node, "WaddleGoldDisplay");
-        }
-    }
     public class WahDisplay : ModDisplay
 {
     public override string BaseDisplay => Generic2dDisplay;
@@ -59,7 +47,7 @@ public class WaddleDee : ModTower
 
     public override string Portrait => "WaddleIcon";
 
-    public bool GoldenThing = false;
+   
     public override void ModifyBaseTowerModel(TowerModel towerModel)
     {
         towerModel.GetAttackModel().weapons[0].projectile = Game.instance.model.GetTower(TowerType.DartMonkey).GetAttackModel().weapons[0].projectile.Duplicate();
@@ -69,10 +57,10 @@ public class WaddleDee : ModTower
     }
     public override string Get2DTexture(int[] tiers)
     {
-        if (GoldenThing == true)
+        if (tiers[1] == 5)
         {
-         return "WaddleGoldDisplay";
-         }
+            return "WaddleGoldDisplay";
+        }
         return "WaddleDisplay";
     }
 }
@@ -135,7 +123,7 @@ public class WahingMoney : ModUpgrade<WaddleDee>
         var MoneyDee = Game.instance.model.GetTowerFromId("BananaFarm-220").GetAttackModel().Duplicate();
         MoneyDee.name = "BananaFarm_Dee";
         MoneyDee.weapons[0].projectile.GetBehavior<CashModel>().maximum = 65;
-        MoneyDee.weapons[0].projectile.GetBehavior<CashModel>().minimum = 30;
+        MoneyDee.weapons[0].projectile.GetBehavior<CashModel>().minimum = 48; // Buff
         towerModel.AddBehavior(MoneyDee);
         towerModel.GetAttackModel().weapons[0].rate *= .4f;
     }
@@ -174,12 +162,12 @@ public class GoldenDee : ModUpgrade<WaddleDee>
     public override string Portrait => "LuigiIcon";
     public override int Path => MIDDLE;
     public override int Tier => 5;
-    public override int Cost => 159860;
+    public override int Cost => 159960;
 
-        public bool GoldenThing = true;
+        
         // public override string DisplayName => "Don't need to override this, the default turns it into 'Pair'"
 
-        public override string Description => "The Golden Waddle Dee.... NOTE: I Don't Know How To Change The Model Just Pretend He's Gold";
+        public override string Description => "The Golden Waddle Dee....";
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
@@ -187,7 +175,7 @@ public class GoldenDee : ModUpgrade<WaddleDee>
         var MoneyDee2 = Game.instance.model.GetTowerFromId("BananaFarm-520").GetAttackModel().Duplicate();
         MoneyDee2.name = "BananaFarm_Dee2";
         MoneyDee2.weapons[0].projectile.GetBehavior<CashModel>().maximum = 1999;
-        MoneyDee2.weapons[0].projectile.GetBehavior<CashModel>().minimum = 150;
+        MoneyDee2.weapons[0].projectile.GetBehavior<CashModel>().minimum = 750;
         towerModel.AddBehavior(MoneyDee2);
 
         var Gold = Game.instance.model.GetTowerFromId("SuperMonkey-302").GetAttackModel().Duplicate();
@@ -216,11 +204,11 @@ public class GoldenDee : ModUpgrade<WaddleDee>
         towerModel.GetAttackModel().weapons[0].rate *= .2f;
         towerModel.GetAttackModel().range += 50;
         towerModel.range += 50;
-        towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().damage = 70;
+        towerModel.GetAttackModel().weapons[0].projectile.GetDamageModel().damage = 58;
         towerModel.GetWeapon().projectile.AddBehavior(new DamageModifierForTagModel("DamageModifierForTagModel", "Moabs", 1, 390, false, true));
 
             
     }
 }
-    }
+   
 
