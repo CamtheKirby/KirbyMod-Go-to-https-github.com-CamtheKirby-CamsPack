@@ -269,7 +269,7 @@ public class SingingClub : ModUpgrade<Kirby>
     public override string Portrait => "LuigiIcon";
     public override int Path => MIDDLE;
     public override int Tier => 4;
-    public override int Cost => 1975;
+    public override int Cost => 2975;
 
     // public override string DisplayName => "Don't need to override this, the default turns it into 'Pair'"
 
@@ -293,13 +293,9 @@ public class SingingClub : ModUpgrade<Kirby>
         towerModel.GetAttackModel().weapons[0].projectile.pierce += 5;
         towerModel.AddBehavior(Ability);
 
-        var buffM1 = new RateSupportModel("RateSupport1", 0.46f, true, "Kirby:Rate", false, 1, null, null, null);
+        var buffM1 = new RateSupportModel("RateSupport1", 0.66f, true, "Kirby:Rate", false, 1, null, null, null);
         buffM1.ApplyBuffIcon<KirbyBuffIcon>();
         towerModel.AddBehavior(buffM1);
-
-        var buffM2 = new RateSupportModel("RateSupport2", 15, true, "Kirby:Damage", false, 1, null, null, null);
-        towerModel.AddBehavior(buffM2);
-
     }
 }
 
@@ -323,6 +319,14 @@ public class SCREAM : ModUpgrade<Kirby>
         towerModel.GetAttackModel().weapons[0].projectile.pierce += 100;
         towerModel.GetAttackModel().range += 3f;
         towerModel.range += 3;
+
+        var Ability = Game.instance.model.GetTowerFromId("Psi 10").GetAbilities()[1].Duplicate();
+        Ability.maxActivationsPerRound = 9999999;
+        Ability.canActivateBetweenRounds = true;
+        Ability.resetCooldownOnTierUpgrade = true;
+        Ability.cooldown = 25;
+        Ability.icon = GetSpriteReference("KirbyPath4Icon_Icon");
+        towerModel.AddBehavior(Ability);
     }
 }
 public class FireAbility : ModUpgrade<Kirby>
@@ -471,7 +475,7 @@ public class StarRod : ModParagonUpgrade<Kirby>
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
-        var Ability = Game.instance.model.GetTower(TowerType.BoomerangMonkey, 0, 5, 0).GetAbilities()[0].Duplicate();
+        var Ability = Game.instance.model.GetTowerFromId("Psi 20").GetAbilities()[1].Duplicate();
         Ability.maxActivationsPerRound = 9999999;
         Ability.canActivateBetweenRounds = true;
         Ability.resetCooldownOnTierUpgrade = true;

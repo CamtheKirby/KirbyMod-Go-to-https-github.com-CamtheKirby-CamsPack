@@ -107,7 +107,7 @@ public class ShadowMoney : ModUpgrade<ShadowKirby>
     {
         var MoneyS = Game.instance.model.GetTowerFromId("BananaFarm-520").GetAttackModel().Duplicate();
         MoneyS.name = "BananaFarm_";
-        MoneyS.weapons[0].projectile.GetBehavior<CashModel>().maximum = 5000;
+        MoneyS.weapons[0].projectile.GetBehavior<CashModel>().maximum = 8000;
         MoneyS.weapons[0].projectile.GetBehavior<CashModel>().minimum = 1000;
         towerModel.AddBehavior(MoneyS);
     }
@@ -162,12 +162,10 @@ public class ShadowCopy : ModUpgrade<ShadowKirby>
     {
         towerModel.GetAttackModel().weapons[0].rate *= .003f;
 
-        var buffM1S = new RateSupportModel("RateSupport1", 0.46f, true, "ShadowKirby:Rate", false, 1, null, null, null);
+        var buffM1S = new RateSupportModel("RateSupport1", 0.96f, true, "ShadowKirby:Rate", false, 1, null, null, null);
         buffM1S.ApplyBuffIcon<SKirbyBuffIcon>();
         towerModel.AddBehavior(buffM1S);
 
-        var buffM2S = new RateSupportModel("RateSupport2", 15, true, "ShadowKirby:Damage", false, 1, null, null, null);
-        towerModel.AddBehavior(buffM2S);
     }
 }
 
