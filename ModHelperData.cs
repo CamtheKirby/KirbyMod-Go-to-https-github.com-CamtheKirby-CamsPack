@@ -2,7 +2,7 @@ namespace KirbyMod;
 
 public static class ModHelperData
 {
-    public const string WorksOnVersion = "38";
+    public const string WorksOnVersion = "39";
     public const string Version = "1.5.6";
     public const string Name = "Kirby Mod";
 
